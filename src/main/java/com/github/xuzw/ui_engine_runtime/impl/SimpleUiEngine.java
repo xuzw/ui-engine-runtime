@@ -74,8 +74,8 @@ public class SimpleUiEngine implements UiEngine {
     }
 
     @Override
-    public void addExternalStyleSheet(ExternalStyleSheet externalStyleSheet) {
-        externalStyleSheets.add(externalStyleSheet);
+    public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
+        this.externalStyleSheets = externalStyleSheets;
     }
 
     @Override

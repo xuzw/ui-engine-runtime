@@ -27,7 +27,7 @@ public interface UiEngine {
 
     List<ExternalStyleSheet> getExternalStyleSheets();
 
-    void addExternalStyleSheet(ExternalStyleSheet externalStyleSheet);
+    void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets);
 
     void writeHtmlFiles(String folder) throws IOException;
 }
