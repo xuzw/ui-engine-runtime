@@ -26,7 +26,7 @@ public class SimpleUiEngine implements UiEngine {
     private static final Charset encoding = Charset.forName("utf8");
     private Map<String, Page> map = new HashMap<>();
     private ErrorPage errorPage;
-    private List<ExternalStyleSheet> externalStyleSheets;
+    private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
 
     @Override
     public List<String> getPageNames() {
@@ -36,7 +36,7 @@ public class SimpleUiEngine implements UiEngine {
     @Override
     public void setPage(String name, Page page) {
         page.setEngine(this);
-        if (externalStyleSheets != null && !externalStyleSheets.isEmpty()) {
+        if (!externalStyleSheets.isEmpty()) {
             page.getHeader().getExternalStyleSheets().addAll(externalStyleSheets);
         }
         map.put(name, page);
@@ -74,15 +74,17 @@ public class SimpleUiEngine implements UiEngine {
     }
 
     @Override
-    public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
-        this.externalStyleSheets = externalStyleSheets;
+    public void addExternalStyleSheet(ExternalStyleSheet externalStyleSheet) {
+        externalStyleSheets.add(externalStyleSheet);
     }
 
     @Override
-    public void writeHtmlFile(String folder, String name) throws IOException {
-        File file = new File(folder, name + ".html");
-        OutputStream output = new FileOutputStream(file);
-        IOUtils.write(getPage(name).toHtml(), output, encoding);
-        IOUtils.closeQuietly(output);
+    public void writeHtmlFiles(String folder) throws IOException {
+        for (String name : map.keySet()) {
+            File file = new File(folder, name + ".html");
+            OutputStream output = new FileOutputStream(file);
+            IOUtils.write(getPage(name).toHtml(), output, encoding);
+            IOUtils.closeQuietly(output);
+        }
     }
 }
