@@ -7,6 +7,9 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
  * @time 2017年5月11日 上午10:25:30
  */
 public class RefreshEvent extends Event {
+    public RefreshEvent(Page page) {
+        setPage(page);
+    }
 
     @Override
     public Page execute() {
