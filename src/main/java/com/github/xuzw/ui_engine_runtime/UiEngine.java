@@ -6,6 +6,7 @@ import java.util.List;
 import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
 import com.github.xuzw.ui_engine_runtime.page.Page;
+import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -13,6 +14,10 @@ import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
  * @time 2017年5月11日 上午9:46:38
  */
 public interface UiEngine {
+    void setExternalScripts(List<ExternalScript> externalScripts);
+
+    List<ExternalScript> getExternalScripts();
+
     void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets);
 
     List<ExternalStyleSheet> getExternalStyleSheets();

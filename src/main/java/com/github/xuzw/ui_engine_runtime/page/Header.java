@@ -2,6 +2,7 @@ package com.github.xuzw.ui_engine_runtime.page;
 
 import java.util.List;
 
+import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -10,6 +11,7 @@ import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
  */
 public class Header {
     private String title;
+    private List<ExternalScript> externalScripts;
     private List<ExternalStyleSheet> externalStyleSheets;
 
     public String getTitle() {
@@ -18,6 +20,14 @@ public class Header {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<ExternalScript> getExternalScripts() {
+        return externalScripts;
+    }
+
+    public void setExternalScripts(List<ExternalScript> externalScripts) {
+        this.externalScripts = externalScripts;
     }
 
     public List<ExternalStyleSheet> getExternalStyleSheets() {

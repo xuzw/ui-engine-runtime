@@ -16,6 +16,7 @@ import com.github.xuzw.ui_engine_runtime.UiEngine;
 import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
 import com.github.xuzw.ui_engine_runtime.page.Page;
+import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -26,7 +27,18 @@ public class SimpleUiEngine implements UiEngine {
     private static final Charset encoding = Charset.forName("utf8");
     private Map<String, Page> map = new HashMap<>();
     private ErrorPage errorPage;
+    private List<ExternalScript> externalScripts = new ArrayList<>();
     private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
+
+    @Override
+    public void setExternalScripts(List<ExternalScript> externalScripts) {
+        this.externalScripts = externalScripts;
+    }
+
+    @Override
+    public List<ExternalScript> getExternalScripts() {
+        return externalScripts;
+    }
 
     @Override
     public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
@@ -41,6 +53,9 @@ public class SimpleUiEngine implements UiEngine {
     @Override
     public void setPage(String pageName, Page page) {
         page.setEngine(this);
+        if (!externalScripts.isEmpty()) {
+            page.getHeader().getExternalScripts().addAll(externalScripts);
+        }
         if (!externalStyleSheets.isEmpty()) {
             page.getHeader().getExternalStyleSheets().addAll(externalStyleSheets);
         }
