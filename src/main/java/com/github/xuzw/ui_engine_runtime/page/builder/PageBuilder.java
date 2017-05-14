@@ -19,6 +19,7 @@ public class PageBuilder {
     public PageBuilder(String title) {
         header.setTitle(title);
         header.setExternalStyleSheets(new ArrayList<>());
+        header.setExternalScripts(new ArrayList<>());
         page.setHeader(header);
         page.setBody(body);
     }
