@@ -1,6 +1,7 @@
 package com.github.xuzw.ui_engine_runtime.event;
 
 import com.github.xuzw.ui_engine_runtime.div.location.Location;
+import com.github.xuzw.ui_engine_runtime.input.Inputs;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 
 /**
@@ -10,6 +11,7 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
 public abstract class Event {
     private Page source;
     private Location location;
+    private Inputs inputs;
 
     public abstract Page execute();
 
@@ -27,5 +29,13 @@ public abstract class Event {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Inputs getInputs() {
+        return inputs;
+    }
+
+    public void setInputs(Inputs inputs) {
+        this.inputs = inputs;
     }
 }

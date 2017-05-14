@@ -5,7 +5,8 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleBlockAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
 import com.github.xuzw.ui_engine_runtime.div.Div;
-import com.github.xuzw.ui_engine_runtime.event.Event;
+import com.github.xuzw.ui_engine_runtime.div.MaskDiv;
+import com.github.xuzw.ui_engine_runtime.div.PopupDiv;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -19,11 +20,7 @@ import com.github.xuzw.ui_engine_runtime.event.Event;
         }), })
 public class Body extends Div {
     private Div body;
-
-    @Override
-    public Page execute(Event event) {
-        return body.execute(event);
-    }
+    private PopupDiv popup;
 
     @Override
     public String toHtml() {
@@ -35,6 +32,10 @@ public class Body extends Div {
     @Override
     protected void build(HtmlBuilder div) {
         div.text(body.toHtml());
+        if (popup != null) {
+            div.text(new MaskDiv().toHtml());
+            div.text(popup.toHtml());
+        }
     }
 
     public Div getBody() {
@@ -43,5 +44,13 @@ public class Body extends Div {
 
     public void setBody(Div body) {
         this.body = body;
+    }
+
+    public PopupDiv getPopup() {
+        return popup;
+    }
+
+    public void setPopup(PopupDiv popup) {
+        this.popup = popup;
     }
 }

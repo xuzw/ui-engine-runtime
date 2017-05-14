@@ -3,7 +3,6 @@ package com.github.xuzw.ui_engine_runtime.div;
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.div.location.ClassName;
 import com.github.xuzw.ui_engine_runtime.div.location.Id;
-import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 
 /**
@@ -12,10 +11,6 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
  */
 public abstract class Div {
     private Page page;
-
-    public Page execute(Event event) {
-        return null;
-    }
 
     public String toHtml() {
         HtmlBuilder root = new HtmlBuilder();

@@ -9,6 +9,8 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
 public class RefreshEvent extends Event {
     @Override
     public Page execute() {
-        return getSource();
+        Page source = getSource();
+        source.getBody().setPopup(null);
+        return source;
     }
 }
