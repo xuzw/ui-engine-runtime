@@ -11,7 +11,7 @@ public abstract class ClickEvent extends Event {
     @Override
     public Page execute() {
         onClick();
-        return getPage();
+        return getSource();
     }
 
     public abstract void onClick();

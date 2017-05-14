@@ -8,17 +8,17 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
  * @time 2017年5月11日 上午10:18:53
  */
 public abstract class Event {
-    private Page page;
+    private Page source;
     private Location location;
 
     public abstract Page execute();
 
-    public Page getPage() {
-        return page;
+    public Page getSource() {
+        return source;
     }
 
-    public void setPage(Page page) {
-        this.page = page;
+    public void setSource(Page source) {
+        this.source = source;
     }
 
     public Location getLocation() {

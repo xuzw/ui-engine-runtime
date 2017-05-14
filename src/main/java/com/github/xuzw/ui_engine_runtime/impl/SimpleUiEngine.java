@@ -29,32 +29,32 @@ public class SimpleUiEngine implements UiEngine {
     private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
 
     @Override
-    public List<String> getPageNames() {
-        return new ArrayList<>(map.keySet());
+    public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
+        this.externalStyleSheets = externalStyleSheets;
     }
 
     @Override
-    public void setPage(String name, Page page) {
+    public List<ExternalStyleSheet> getExternalStyleSheets() {
+        return externalStyleSheets;
+    }
+
+    @Override
+    public void setPage(String pageName, Page page) {
         page.setEngine(this);
         if (!externalStyleSheets.isEmpty()) {
             page.getHeader().getExternalStyleSheets().addAll(externalStyleSheets);
         }
-        map.put(name, page);
+        map.put(pageName, page);
     }
 
     @Override
-    public Page getPage(String name) {
-        return map.get(name);
+    public Page getPage(String pageName) {
+        return map.get(pageName);
     }
 
     @Override
-    public Page execute(Event event) {
-        try {
-            return event.execute();
-        } catch (Throwable e) {
-            errorPage.setThrowable(e);
-            return errorPage;
-        }
+    public List<String> getPageNames() {
+        return new ArrayList<>(map.keySet());
     }
 
     @Override
@@ -69,22 +69,22 @@ public class SimpleUiEngine implements UiEngine {
     }
 
     @Override
-    public List<ExternalStyleSheet> getExternalStyleSheets() {
-        return externalStyleSheets;
-    }
-
-    @Override
-    public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
-        this.externalStyleSheets = externalStyleSheets;
-    }
-
-    @Override
     public void writeHtmlFiles(String folder) throws IOException {
         for (String name : map.keySet()) {
             File file = new File(folder, name + ".html");
             OutputStream output = new FileOutputStream(file);
             IOUtils.write(getPage(name).toHtml(), output, encoding);
             IOUtils.closeQuietly(output);
+        }
+    }
+
+    @Override
+    public Page execute(Event event) {
+        try {
+            return event.execute();
+        } catch (Throwable e) {
+            errorPage.setThrowable(e);
+            return errorPage;
         }
     }
 }

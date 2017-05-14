@@ -13,21 +13,21 @@ import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
  * @time 2017年5月11日 上午9:46:38
  */
 public interface UiEngine {
+    void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets);
+
+    List<ExternalStyleSheet> getExternalStyleSheets();
+
+    void setPage(String pageName, Page page);
+
+    Page getPage(String pageName);
+
     List<String> getPageNames();
-
-    void setPage(String name, Page page);
-
-    Page getPage(String name);
-
-    Page execute(Event event);
 
     void setErroPage(ErrorPage errorPage);
 
     ErrorPage getErroPage();
 
-    List<ExternalStyleSheet> getExternalStyleSheets();
-
-    void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets);
-
     void writeHtmlFiles(String folder) throws IOException;
+
+    Page execute(Event event);
 }
