@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.UiEngine;
+import com.github.xuzw.ui_engine_runtime.div.wrapper.Body;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 

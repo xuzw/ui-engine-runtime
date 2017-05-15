@@ -1,6 +1,6 @@
 var UiEngine = {
 	click : function(source) {
-		cookie.set('uiEngine.eventType', source.id);
+		cookie.set('uiEngine.eventType', source.dataset.clickEventClass);
 		this.updateCookies();
 		this.refresh();
 	},

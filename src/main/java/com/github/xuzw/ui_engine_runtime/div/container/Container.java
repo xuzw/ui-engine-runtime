@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.xuzw.ui_engine_runtime.div.Div;
+import com.github.xuzw.ui_engine_runtime.div.location.Location;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -25,17 +26,18 @@ public abstract class Container extends Div {
         return this;
     }
 
-    public Div get(String className, String id) {
-        if (this.is(className, id)) {
+    @Override
+    public Div get(Location location) {
+        if (this.is(location)) {
             return this;
         }
         for (Div element : elements) {
-            if (element.is(className, id)) {
+            if (element.is(location)) {
                 return element;
             }
         }
         for (Container childContainer : getChildContainers()) {
-            Div div = childContainer.get(className, id);
+            Div div = childContainer.get(location);
             if (div != null) {
                 return div;
             }

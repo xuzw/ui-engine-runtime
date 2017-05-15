@@ -3,6 +3,7 @@ package com.github.xuzw.ui_engine_runtime.div;
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.div.location.ClassName;
 import com.github.xuzw.ui_engine_runtime.div.location.Id;
+import com.github.xuzw.ui_engine_runtime.div.location.Location;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 
 /**
@@ -28,8 +29,12 @@ public abstract class Div {
         return Id.of(this);
     }
 
-    public boolean is(String className, String id) {
-        return getClassName().equals(className) && getId().equals(id);
+    public boolean is(Location location) {
+        return getClassName().equals(location.getClassName()) && getId().equals(location.getId());
+    }
+
+    public Div get(Location location) {
+        return is(location) ? this : null;
     }
 
     public Page getPage() {

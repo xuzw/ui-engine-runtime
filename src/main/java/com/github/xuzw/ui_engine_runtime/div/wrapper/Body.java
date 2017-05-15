@@ -1,4 +1,4 @@
-package com.github.xuzw.ui_engine_runtime.page;
+package com.github.xuzw.ui_engine_runtime.div.wrapper;
 
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleAnnotation;
@@ -6,7 +6,7 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleBlockAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
 import com.github.xuzw.ui_engine_runtime.div.Div;
 import com.github.xuzw.ui_engine_runtime.div.MaskDiv;
-import com.github.xuzw.ui_engine_runtime.div.PopupDiv;
+import com.github.xuzw.ui_engine_runtime.div.location.Location;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -18,9 +18,9 @@ import com.github.xuzw.ui_engine_runtime.div.PopupDiv;
                 @StyleDeclarationAnnotation(property = "margin", value = "0px"), //
                 @StyleDeclarationAnnotation(property = "padding", value = "0px"), //
         }), })
-public class Body extends Div {
+public final class Body extends Div {
     private Div body;
-    private PopupDiv popup;
+    private PopupDivWrapper popup;
 
     @Override
     public String toHtml() {
@@ -38,6 +38,15 @@ public class Body extends Div {
         }
     }
 
+    @Override
+    public Div get(Location location) {
+        Div div = body.get(location);
+        if (div != null) {
+            return div;
+        }
+        return popup.get(location);
+    }
+
     public Div getBody() {
         return body;
     }
@@ -46,11 +55,11 @@ public class Body extends Div {
         this.body = body;
     }
 
-    public PopupDiv getPopup() {
+    public PopupDivWrapper getPopup() {
         return popup;
     }
 
-    public void setPopup(PopupDiv popup) {
+    public void setPopup(PopupDivWrapper popup) {
         this.popup = popup;
     }
 }
