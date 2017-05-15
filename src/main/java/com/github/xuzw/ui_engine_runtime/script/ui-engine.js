@@ -1,6 +1,9 @@
 var UiEngine = {
 	click : function(source) {
-		cookie.set('uiEngine.eventType', source.dataset.clickEventClass);
+		var div = source.parentNode;
+		cookie.set('uiEngine.event.type', source.dataset.clickEventClass);
+		cookie.set('uiEngine.event.location.className', div.className);
+		cookie.set('uiEngine.event.location.id', div.id);
 		this.updateCookies();
 		this.refresh();
 	},
@@ -12,7 +15,7 @@ var UiEngine = {
 		}
 	},
 	deleteCookies : function() {
-		cookie.remove('uiEngine.eventType');
+		cookie.remove('uiEngine.event.type');
 		var cookies = cookie.all();
 		for ( var x in cookies) {
 			if (x.startsWith('uiEngine.input.')) {
