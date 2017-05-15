@@ -6,7 +6,7 @@ package com.github.xuzw.ui_engine_runtime.div.location;
  */
 public class ClassName {
     public static String of(Class<?> clz) {
-        return clz.getSimpleName();
+        return clz.getName().replaceAll("\\.", "-");
     }
 
     public static String selector(Class<?> clz, String selector) {

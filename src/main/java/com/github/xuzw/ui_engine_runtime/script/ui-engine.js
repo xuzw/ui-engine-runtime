@@ -28,6 +28,16 @@ var UiEngine = {
 	},
 	init : function() {
 		this.deleteCookies();
+	},
+	closePopup : function() {
+		for (let x of document
+				.getElementsByClassName("com-github-xuzw-ui_engine_runtime-div-MaskDiv")) {
+			x.parentNode.removeChild(x);
+		}
+		for (let x of document
+				.getElementsByClassName("com-github-xuzw-ui_engine_runtime-div-wrapper-PopupDivWrapper")) {
+			x.parentNode.removeChild(x);
+		}
 	}
 }
 
