@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.UiEngine;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
+import com.github.xuzw.ui_engine_runtime.script.Script;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -25,15 +26,14 @@ public class Page {
         head.child("title").text(header.getTitle());
         head.child("meta").attr("charset", "utf-8");
         head.child("meta").attr("name", "generator").attr("content", _buildTime());
-        if (header.getExternalStyleSheets() != null) {
-            for (ExternalStyleSheet x : header.getExternalStyleSheets()) {
-                head.child("link").attr("rel", "stylesheet").attr("type", "text/css").attr("href", x.getHref());
-            }
+        for (ExternalStyleSheet x : header.getExternalStyleSheets()) {
+            head.child("link").attr("rel", "stylesheet").attr("type", "text/css").attr("href", x.getHref());
         }
-        if (header.getExternalScripts() != null) {
-            for (ExternalScript x : header.getExternalScripts()) {
-                head.child("script").attr("type", "text/javascript").attr("src", x.getSrc());
-            }
+        for (ExternalScript x : header.getExternalScripts()) {
+            head.child("script").attr("type", "text/javascript").attr("src", x.getSrc());
+        }
+        for (Script x : header.getScripts()) {
+            head.child("script").attr("type", "text/javascript").text(x.toString());
         }
         // ----
         html.text(body.toHtml());

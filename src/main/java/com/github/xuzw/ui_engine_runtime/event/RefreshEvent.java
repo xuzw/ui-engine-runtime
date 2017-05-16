@@ -10,6 +10,7 @@ public class RefreshEvent extends Event {
     @Override
     public Page execute() {
         Page source = getSource();
+        source.getHeader().clearScript();
         source.getBody().setPopup(null);
         return source;
     }

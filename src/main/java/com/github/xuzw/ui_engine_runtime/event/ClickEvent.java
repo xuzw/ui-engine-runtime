@@ -9,8 +9,11 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
 public abstract class ClickEvent extends Event {
     @Override
     public Page execute() {
+        Page source = getSource();
+        source.getHeader().clearScript();
+        source.getBody().setPopup(null);
         onClick();
-        return getSource();
+        return source;
     }
 
     public void onClick() {

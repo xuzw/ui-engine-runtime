@@ -1,7 +1,5 @@
 package com.github.xuzw.ui_engine_runtime.page.builder;
 
-import java.util.ArrayList;
-
 import com.github.xuzw.ui_engine_runtime.div.Div;
 import com.github.xuzw.ui_engine_runtime.page.Body;
 import com.github.xuzw.ui_engine_runtime.page.Header;
@@ -18,8 +16,6 @@ public class PageBuilder {
 
     public PageBuilder(String title) {
         header.setTitle(title);
-        header.setExternalStyleSheets(new ArrayList<>());
-        header.setExternalScripts(new ArrayList<>());
         page.setHeader(header);
         page.setBody(body);
     }

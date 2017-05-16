@@ -31,14 +31,14 @@ var UiEngine = {
         this.deleteCookies();
     },
     closePopup: function() {
-    	var maskDivs = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-MaskDiv');
-    	for (var i = 0; i < maskDivs.length; i++) {
-        	maskDivs[i].parentNode.removeChild(maskDivs[i]);
-		}
-    	var popupDivWrappers = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-wrapper-PopupDivWrapper');
-    	for (var i = 0; i < popupDivWrappers.length; i++) {
-    		popupDivWrappers[i].parentNode.removeChild(popupDivWrappers[i]);
-		}
+        var maskDivs = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-MaskDiv');
+        for (var i = 0; i < maskDivs.length; i++) {
+            maskDivs[i].parentNode.removeChild(maskDivs[i]);
+        }
+        var popupDivWrappers = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-wrapper-PopupDivWrapper');
+        for (var i = 0; i < popupDivWrappers.length; i++) {
+            popupDivWrappers[i].parentNode.removeChild(popupDivWrappers[i]);
+        }
     }
 }
 
