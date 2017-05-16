@@ -10,7 +10,7 @@ public class ClassName {
     }
 
     public static String selector(Class<?> clz, String selector) {
-        return of(clz) + selector;
+        return of(clz) + " " + selector;
     }
 
     public static String selector(Class<?> clz) {
