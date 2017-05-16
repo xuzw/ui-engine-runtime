@@ -3,7 +3,7 @@ package com.github.xuzw.ui_engine_runtime.page.builder;
 import java.util.ArrayList;
 
 import com.github.xuzw.ui_engine_runtime.div.Div;
-import com.github.xuzw.ui_engine_runtime.div.wrapper.Body;
+import com.github.xuzw.ui_engine_runtime.page.Body;
 import com.github.xuzw.ui_engine_runtime.page.Header;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 
