@@ -3,17 +3,17 @@ package com.github.xuzw.ui_engine_runtime;
 import java.util.List;
 
 import com.github.xuzw.ui_engine_runtime.event.Event;
+import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
-import com.github.xuzw.ui_engine_runtime.page.Page;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
  * @time 2017年5月11日 上午9:46:38
  */
 public interface UiEngine {
-    void addPage(Page page);
+    void addPage(AbstractPage page);
 
-    Page getPage(String pageName);
+    AbstractPage getPage(String pageName);
 
     List<String> getPageNames();
 
@@ -21,5 +21,5 @@ public interface UiEngine {
 
     ErrorPage getErroPage();
 
-    Page execute(Event event);
+    AbstractPage execute(Event event);
 }

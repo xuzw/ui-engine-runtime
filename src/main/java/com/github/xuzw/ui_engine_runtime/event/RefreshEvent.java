@@ -1,6 +1,6 @@
 package com.github.xuzw.ui_engine_runtime.event;
 
-import com.github.xuzw.ui_engine_runtime.page.Page;
+import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -8,8 +8,8 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
  */
 public class RefreshEvent extends Event {
     @Override
-    public Page execute() {
-        Page source = getSource();
+    public AbstractPage execute() {
+        AbstractPage source = getSource();
         source.getHeader().clearScript();
         return source;
     }

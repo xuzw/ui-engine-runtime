@@ -1,5 +1,6 @@
 package com.github.xuzw.ui_engine_runtime.event;
 
+import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 
 /**
@@ -8,7 +9,7 @@ import com.github.xuzw.ui_engine_runtime.page.Page;
  */
 public abstract class ClickEvent extends Event {
     @Override
-    public Page execute() {
+    public AbstractPage execute() {
         Page source = getSource();
         source.getHeader().clearScript();
         onClick();
@@ -16,5 +17,14 @@ public abstract class ClickEvent extends Event {
     }
 
     public void onClick() {
+    }
+
+    @Override
+    public Page getSource() {
+        return (Page) super.getSource();
+    }
+
+    public void setSource(Page source) {
+        super.setSource(source);
     }
 }
