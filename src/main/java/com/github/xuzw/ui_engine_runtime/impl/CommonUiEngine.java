@@ -3,8 +3,6 @@ package com.github.xuzw.ui_engine_runtime.impl;
 import java.util.List;
 
 import com.github.xuzw.ui_engine_runtime.div.Div;
-import com.github.xuzw.ui_engine_runtime.frameset.FrameSet;
-import com.github.xuzw.ui_engine_runtime.frameset.FrameSetPage;
 import com.github.xuzw.ui_engine_runtime.page.Page;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
@@ -24,9 +22,5 @@ public class CommonUiEngine extends SimpleUiEngine {
 
     public void addPage(String name, String title, Div body) {
         addPage(new Page(name).title(title).body(body).externalStyleSheets(commonExternalStyleSheets).externalScripts(commonExternalScripts));
-    }
-
-    public void addFrameSetPage(String name, String title, FrameSet frameSet) {
-        addPage(new FrameSetPage(name).title(title).frameSet(frameSet).externalStyleSheets(commonExternalStyleSheets).externalScripts(commonExternalScripts));
     }
 }
