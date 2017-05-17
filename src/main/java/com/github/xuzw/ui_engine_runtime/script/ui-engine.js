@@ -30,16 +30,27 @@ var UiEngine = {
     init: function() {
         this.deleteCookies();
     },
-    closePopup: function() {
-        var maskDivs = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-MaskDiv');
-        for (var i = 0; i < maskDivs.length; i++) {
-            maskDivs[i].parentNode.removeChild(maskDivs[i]);
-        }
-        var popupDivWrappers = document.getElementsByClassName('com-github-xuzw-ui_engine_runtime-div-wrapper-PopupDivWrapper');
-        for (var i = 0; i < popupDivWrappers.length; i++) {
-            popupDivWrappers[i].parentNode.removeChild(popupDivWrappers[i]);
-        }
+    hideElement: function(id) {
+        document.getElementById(id).style.display = "none";
+    },
+    showElement: function(id) {
+        document.getElementById(id).style.display = "block";
+    },
+    hidePopupMask: function() {
+        this.hideElement('com-github-xuzw-ui_engine_runtime-page-popup-PopupMaskDiv');
+    },
+    showPopupMask: function() {
+        this.showElement('com-github-xuzw-ui_engine_runtime-page-popup-PopupMaskDiv');
+    },
+    hidePopup: function(id) {
+        this.hidePopupMask();
+        this.hideElement(id);
+    },
+    showPopup: function(id) {
+        this.showPopupMask();
+        this.showElement(id);
     }
 }
 
 UiEngine.init();
+

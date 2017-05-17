@@ -1,7 +1,5 @@
 package com.github.xuzw.ui_engine_runtime.div.location;
 
-import java.util.UUID;
-
 import com.github.xuzw.ui_engine_runtime.div.Div;
 
 /**
@@ -13,7 +11,7 @@ public class Id {
         return String.valueOf(div.hashCode());
     }
 
-    public static String uuid() {
-        return UUID.randomUUID().toString();
+    public static String of(Class<?> clz) {
+        return ClassName.of(clz);
     }
 }

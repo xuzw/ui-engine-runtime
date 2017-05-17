@@ -11,7 +11,6 @@ public abstract class ClickEvent extends Event {
     public Page execute() {
         Page source = getSource();
         source.getHeader().clearScript();
-        source.getBody().setPopup(null);
         onClick();
         return source;
     }

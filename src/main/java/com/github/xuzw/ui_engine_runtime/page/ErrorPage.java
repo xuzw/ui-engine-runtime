@@ -7,6 +7,10 @@ package com.github.xuzw.ui_engine_runtime.page;
 public class ErrorPage extends Page {
     private Throwable throwable;
 
+    public ErrorPage(String name) {
+        super(name);
+    }
+
     public Throwable getThrowable() {
         return throwable;
     }

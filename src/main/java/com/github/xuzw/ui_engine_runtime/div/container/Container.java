@@ -21,6 +21,14 @@ public abstract class Container extends Div {
         return elements.get(index);
     }
 
+    public Div remove(int index) {
+        return elements.remove(index);
+    }
+
+    public boolean remove(Div element) {
+        return elements.remove(element);
+    }
+
     public Container set(int index, Div element) {
         elements.set(index, element);
         return this;

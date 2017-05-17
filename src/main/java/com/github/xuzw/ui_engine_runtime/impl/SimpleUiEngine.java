@@ -1,65 +1,27 @@
 package com.github.xuzw.ui_engine_runtime.impl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
-
 import com.github.xuzw.ui_engine_runtime.UiEngine;
 import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
 import com.github.xuzw.ui_engine_runtime.page.Page;
-import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
-import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
  * @time 2017年5月11日 上午10:50:49
  */
 public class SimpleUiEngine implements UiEngine {
-    private static final Charset encoding = Charset.forName("utf8");
     private Map<String, Page> map = new HashMap<>();
     private ErrorPage errorPage;
-    private List<ExternalScript> externalScripts = new ArrayList<>();
-    private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
 
     @Override
-    public void setExternalScripts(List<ExternalScript> externalScripts) {
-        this.externalScripts = externalScripts;
-    }
-
-    @Override
-    public List<ExternalScript> getExternalScripts() {
-        return externalScripts;
-    }
-
-    @Override
-    public void setExternalStyleSheets(List<ExternalStyleSheet> externalStyleSheets) {
-        this.externalStyleSheets = externalStyleSheets;
-    }
-
-    @Override
-    public List<ExternalStyleSheet> getExternalStyleSheets() {
-        return externalStyleSheets;
-    }
-
-    @Override
-    public void setPage(String pageName, Page page) {
+    public void addPage(Page page) {
         page.setEngine(this);
-        if (!externalScripts.isEmpty()) {
-            page.getHeader().getExternalScripts().addAll(externalScripts);
-        }
-        if (!externalStyleSheets.isEmpty()) {
-            page.getHeader().getExternalStyleSheets().addAll(externalStyleSheets);
-        }
-        map.put(pageName, page);
+        map.put(page.getName(), page);
     }
 
     @Override
@@ -81,16 +43,6 @@ public class SimpleUiEngine implements UiEngine {
     @Override
     public ErrorPage getErroPage() {
         return errorPage;
-    }
-
-    @Override
-    public void writeHtmlFiles(String folder) throws IOException {
-        for (String name : map.keySet()) {
-            File file = new File(folder, name + ".html");
-            OutputStream output = new FileOutputStream(file);
-            IOUtils.write(getPage(name).toHtml(), output, encoding);
-            IOUtils.closeQuietly(output);
-        }
     }
 
     @Override

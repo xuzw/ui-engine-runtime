@@ -1,9 +1,10 @@
-package com.github.xuzw.ui_engine_runtime.div;
+package com.github.xuzw.ui_engine_runtime.page.popup;
 
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleBlockAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
+import com.github.xuzw.ui_engine_runtime.div.SingletonDiv;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -11,6 +12,7 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
  */
 @StyleAnnotation({ //
         @StyleBlockAnnotation({ //
+                @StyleDeclarationAnnotation(property = "display", value = "none"), //
                 @StyleDeclarationAnnotation(property = "width", value = "100%"), //
                 @StyleDeclarationAnnotation(property = "height", value = "100%"), //
                 @StyleDeclarationAnnotation(property = "background", value = "rgba(0, 0, 0, 0.5)"), //
@@ -19,8 +21,7 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
                 @StyleDeclarationAnnotation(property = "top", value = "0px"), //
                 @StyleDeclarationAnnotation(property = "z-index", value = "1"), //
         }) })
-public class MaskDiv extends Div {
-
+public class PopupMaskDiv extends SingletonDiv {
     @Override
     protected void build(HtmlBuilder div) {
     }

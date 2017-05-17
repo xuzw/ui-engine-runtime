@@ -5,9 +5,9 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleBlockAnnotation;
 import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
 import com.github.xuzw.ui_engine_runtime.div.Div;
-import com.github.xuzw.ui_engine_runtime.div.MaskDiv;
+import com.github.xuzw.ui_engine_runtime.div.SingletonDiv;
 import com.github.xuzw.ui_engine_runtime.div.location.Location;
-import com.github.xuzw.ui_engine_runtime.div.wrapper.PopupDivWrapper;
+import com.github.xuzw.ui_engine_runtime.page.popup.PopupContainer;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -19,9 +19,16 @@ import com.github.xuzw.ui_engine_runtime.div.wrapper.PopupDivWrapper;
                 @StyleDeclarationAnnotation(property = "margin", value = "0px"), //
                 @StyleDeclarationAnnotation(property = "padding", value = "0px"), //
         }), })
-public final class Body extends Div {
+public final class Body extends SingletonDiv {
     private Div body;
-    private PopupDivWrapper popup;
+    private PopupContainer popupContainer = new PopupContainer();
+
+    public Body() {
+    }
+
+    public Body(Div body) {
+        this.body = body;
+    }
 
     @Override
     public String toHtml() {
@@ -33,10 +40,7 @@ public final class Body extends Div {
     @Override
     protected void build(HtmlBuilder div) {
         div.text(body.toHtml());
-        if (popup != null) {
-            div.text(new MaskDiv().toHtml());
-            div.text(popup.toHtml());
-        }
+        div.text(popupContainer.toHtml());
     }
 
     @Override
@@ -48,7 +52,12 @@ public final class Body extends Div {
         if (div != null) {
             return div;
         }
-        return popup.get(location);
+        return popupContainer.get(location);
+    }
+
+    public Body body(Div body) {
+        setBody(body);
+        return this;
     }
 
     public Div getBody() {
@@ -59,11 +68,11 @@ public final class Body extends Div {
         this.body = body;
     }
 
-    public PopupDivWrapper getPopup() {
-        return popup;
+    public PopupContainer getPopupContainer() {
+        return popupContainer;
     }
 
-    public void setPopup(PopupDivWrapper popup) {
-        this.popup = popup;
+    public void setPopupContainer(PopupContainer popupContainer) {
+        this.popupContainer = popupContainer;
     }
 }

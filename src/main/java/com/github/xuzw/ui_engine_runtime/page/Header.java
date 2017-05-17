@@ -17,6 +17,10 @@ public class Header {
     private List<ExternalScript> externalScripts = new ArrayList<>();
     private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
 
+    public Header(String title) {
+        this.title = title;
+    }
+
     public void clearScript() {
         scripts.clear();
     }

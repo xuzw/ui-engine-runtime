@@ -5,23 +5,23 @@ package com.github.xuzw.ui_engine_runtime.input;
  * @time 2017年5月15日 上午1:54:37
  */
 public class Input {
-    private String name;
+    private String id;
     private String value;
 
     public Input() {
     }
 
-    public Input(String name, String value) {
-        this.name = name;
+    public Input(String id, String value) {
+        this.id = id;
         this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getValue() {
