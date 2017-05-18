@@ -26,8 +26,11 @@ public class XList extends Container {
     protected void build(HtmlBuilder div) {
         HtmlBuilder ul = div.child("ul").cssClass(ClassName.of(XList.class));
         for (Div element : getElements()) {
-            ul.child("li").text(element.toHtml());
+            onBuildElement(ul.child("li").text(element.toHtml()), element);
         }
         div.text(ClearLeftFloatDiv.instance.toHtml());
+    }
+
+    protected void onBuildElement(HtmlBuilder li, Div element) {
     }
 }
