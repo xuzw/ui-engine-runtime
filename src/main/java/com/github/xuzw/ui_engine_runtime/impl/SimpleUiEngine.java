@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.xuzw.ui_engine_runtime.UiEngine;
-import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
 
@@ -43,15 +42,5 @@ public class SimpleUiEngine implements UiEngine {
     @Override
     public ErrorPage getErroPage() {
         return errorPage;
-    }
-
-    @Override
-    public AbstractPage execute(Event event) {
-        try {
-            return event.execute();
-        } catch (Throwable e) {
-            errorPage.setThrowable(e);
-            return errorPage;
-        }
     }
 }

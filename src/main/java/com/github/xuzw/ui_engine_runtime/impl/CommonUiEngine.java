@@ -2,8 +2,7 @@ package com.github.xuzw.ui_engine_runtime.impl;
 
 import java.util.List;
 
-import com.github.xuzw.ui_engine_runtime.div.Div;
-import com.github.xuzw.ui_engine_runtime.page.Page;
+import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
@@ -20,7 +19,9 @@ public class CommonUiEngine extends SimpleUiEngine {
         this.commonExternalScripts = commonExternalScripts;
     }
 
-    public void addPage(String name, String title, Div body) {
-        addPage(new Page(name).title(title).body(body).externalStyleSheets(commonExternalStyleSheets).externalScripts(commonExternalScripts));
+    @Override
+    public void addPage(AbstractPage page) {
+        page.externalStyleSheets(commonExternalStyleSheets).externalScripts(commonExternalScripts);
+        super.addPage(page);
     }
 }

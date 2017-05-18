@@ -2,7 +2,6 @@ package com.github.xuzw.ui_engine_runtime;
 
 import java.util.List;
 
-import com.github.xuzw.ui_engine_runtime.event.Event;
 import com.github.xuzw.ui_engine_runtime.page.AbstractPage;
 import com.github.xuzw.ui_engine_runtime.page.ErrorPage;
 
@@ -20,6 +19,4 @@ public interface UiEngine {
     void setErroPage(ErrorPage errorPage);
 
     ErrorPage getErroPage();
-
-    AbstractPage execute(Event event);
 }

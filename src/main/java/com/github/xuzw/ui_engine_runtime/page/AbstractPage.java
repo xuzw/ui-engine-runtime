@@ -6,6 +6,7 @@ import java.util.List;
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.UiEngine;
 import com.github.xuzw.ui_engine_runtime.html.HtmlElement;
+import com.github.xuzw.ui_engine_runtime.input.Inputs;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
 import com.github.xuzw.ui_engine_runtime.script.Script;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
@@ -22,6 +23,19 @@ public abstract class AbstractPage implements HtmlElement {
     public AbstractPage(String name) {
         this.name = name;
         header = new Header(name);
+    }
+
+    public AbstractPage filter(Inputs inputs) {
+        header.clearScript();
+        return doFilter(inputs);
+    }
+
+    protected AbstractPage doFilter(Inputs inputs) {
+        onFilter(inputs);
+        return this;
+    }
+
+    protected void onFilter(Inputs inputs) {
     }
 
     @Override
