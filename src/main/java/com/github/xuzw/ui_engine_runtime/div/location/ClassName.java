@@ -10,7 +10,11 @@ public class ClassName {
     }
 
     public static String selector(Class<?> clz, String selector) {
-        return of(clz) + " " + selector;
+        String base = of(clz);
+        if (selector.startsWith(":") || selector.startsWith(">") || selector.startsWith(" ")) {
+            return base + selector;
+        }
+        return base + " " + selector;
     }
 
     public static String selector(Class<?> clz) {
