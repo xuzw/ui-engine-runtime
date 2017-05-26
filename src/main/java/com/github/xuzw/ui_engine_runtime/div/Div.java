@@ -17,11 +17,20 @@ public abstract class Div implements HtmlElement {
     @Override
     public String toHtml() {
         HtmlBuilder root = new HtmlBuilder();
-        build(root.child("div").id(getId()).cssClass(getClassName()));
+        HtmlBuilder div = root.child("div").id(getId()).cssClass(getClassName());
+        beforeBuild(div);
+        build(div);
+        afterBuild(div);
         return root.build();
     }
 
+    protected void beforeBuild(HtmlBuilder div) {
+    }
+
     protected abstract void build(HtmlBuilder div);
+
+    protected void afterBuild(HtmlBuilder div) {
+    }
 
     public String getClassName() {
         return ClassName.of(getClass());

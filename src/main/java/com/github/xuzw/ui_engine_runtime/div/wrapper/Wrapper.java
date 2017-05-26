@@ -27,4 +27,8 @@ public abstract class Wrapper extends Div {
         }
         return element.get(location);
     }
+
+    public Div getElement() {
+        return element;
+    }
 }
