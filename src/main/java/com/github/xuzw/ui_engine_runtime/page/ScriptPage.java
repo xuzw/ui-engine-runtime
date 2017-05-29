@@ -28,8 +28,10 @@ public class ScriptPage extends AbstractPage {
     @Override
     public String toHtml() {
         HtmlBuilder root = new HtmlBuilder();
-        for (Script script : scripts) {
-            root.child("script").attr("type", "text/javascript").text(String.format("/* GenerateBy %s %s */", getClass().getName(), _buildTime())).text(script.toString());
+        HtmlBuilder script = root.child("script").attr("type", "text/javascript");
+        script.text(String.format("/* GenerateBy %s %s */", getClass().getName(), _buildTime()));
+        for (Script x : scripts) {
+            script.text(x.toString());
         }
         return root.build();
     }
