@@ -7,7 +7,6 @@ import com.github.xuzw.ui_engine_runtime.annotation.StyleDeclarationAnnotation;
 import com.github.xuzw.ui_engine_runtime.div.Div;
 import com.github.xuzw.ui_engine_runtime.div.SingletonDiv;
 import com.github.xuzw.ui_engine_runtime.div.location.Location;
-import com.github.xuzw.ui_engine_runtime.page.popup.PopupContainer;
 
 /**
  * @author 徐泽威 xuzewei_2012@126.com
@@ -21,7 +20,6 @@ import com.github.xuzw.ui_engine_runtime.page.popup.PopupContainer;
         }), })
 public final class Body extends SingletonDiv {
     private Div body;
-    private PopupContainer popupContainer = new PopupContainer();
 
     public Body() {
     }
@@ -40,7 +38,6 @@ public final class Body extends SingletonDiv {
     @Override
     protected void build(HtmlBuilder div) {
         div.text(body.toHtml());
-        div.text(popupContainer.toHtml());
     }
 
     @Override
@@ -52,7 +49,7 @@ public final class Body extends SingletonDiv {
         if (div != null) {
             return div;
         }
-        return popupContainer.get(location);
+        return null;
     }
 
     public Body body(Div body) {
@@ -66,13 +63,5 @@ public final class Body extends SingletonDiv {
 
     public void setBody(Div body) {
         this.body = body;
-    }
-
-    public PopupContainer getPopupContainer() {
-        return popupContainer;
-    }
-
-    public void setPopupContainer(PopupContainer popupContainer) {
-        this.popupContainer = popupContainer;
     }
 }

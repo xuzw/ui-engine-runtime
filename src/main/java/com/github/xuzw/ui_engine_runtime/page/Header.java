@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
-import com.github.xuzw.ui_engine_runtime.script.Script;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -13,20 +12,11 @@ import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
  */
 public class Header {
     private String title;
-    private List<Script> scripts = new ArrayList<>();
     private List<ExternalScript> externalScripts = new ArrayList<>();
     private List<ExternalStyleSheet> externalStyleSheets = new ArrayList<>();
 
     public Header(String title) {
         this.title = title;
-    }
-
-    public void clearScript() {
-        scripts.clear();
-    }
-
-    public void addScript(Script script) {
-        scripts.add(script);
     }
 
     public void addExternalScript(ExternalScript externalScript) {
@@ -43,14 +33,6 @@ public class Header {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<Script> getScripts() {
-        return scripts;
-    }
-
-    public void setScripts(List<Script> scripts) {
-        this.scripts = scripts;
     }
 
     public List<ExternalScript> getExternalScripts() {

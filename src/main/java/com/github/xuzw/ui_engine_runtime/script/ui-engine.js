@@ -1,10 +1,13 @@
 var UiEngine = {
-    ajax: function(url, target) {
+    loadScript: function(url) {
         UiEngine.updateCookies();
-        $('#' + target).load(url,
-        function(responseTxt, statusTxt, xhr) {
-            if (statusTxt == "error") {
-                alert("Error: " + xhr.status + ": " + xhr.statusText);
+        $.ajax({
+            url: url,
+            success: function(responseTxt) {
+                $(document.body).append(responseTxt);
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                alert('loadScript error: ' + jqXhr.status);
             }
         });
     },

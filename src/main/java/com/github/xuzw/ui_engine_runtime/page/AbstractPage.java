@@ -8,7 +8,6 @@ import com.github.xuzw.ui_engine_runtime.UiEngine;
 import com.github.xuzw.ui_engine_runtime.html.HtmlElement;
 import com.github.xuzw.ui_engine_runtime.input.Inputs;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
-import com.github.xuzw.ui_engine_runtime.script.Script;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -26,7 +25,6 @@ public abstract class AbstractPage implements HtmlElement {
     }
 
     public AbstractPage filter(Inputs inputs) {
-        header.clearScript();
         return doFilter(inputs);
     }
 
@@ -53,9 +51,6 @@ public abstract class AbstractPage implements HtmlElement {
         for (ExternalScript x : header.getExternalScripts()) {
             head.child("script").attr("type", "text/javascript").attr("src", x.getSrc());
         }
-        for (Script x : header.getScripts()) {
-            head.child("script").attr("type", "text/javascript").text(x.toString());
-        }
         build(html);
         return root.build();
     }
@@ -68,13 +63,6 @@ public abstract class AbstractPage implements HtmlElement {
 
     public AbstractPage title(String title) {
         header.setTitle(title);
-        return this;
-    }
-
-    public AbstractPage scripts(List<Script> scripts) {
-        for (Script script : scripts) {
-            header.addScript(script);
-        }
         return this;
     }
 

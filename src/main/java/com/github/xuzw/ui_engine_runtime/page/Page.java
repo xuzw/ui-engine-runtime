@@ -5,7 +5,6 @@ import java.util.List;
 import com.github.xuzw.html_builder.HtmlBuilder;
 import com.github.xuzw.ui_engine_runtime.div.Div;
 import com.github.xuzw.ui_engine_runtime.script.ExternalScript;
-import com.github.xuzw.ui_engine_runtime.script.Script;
 import com.github.xuzw.ui_engine_runtime.style.ExternalStyleSheet;
 
 /**
@@ -27,11 +26,6 @@ public class Page extends AbstractPage {
     @Override
     public Page title(String title) {
         return (Page) super.title(title);
-    }
-
-    @Override
-    public Page scripts(List<Script> scripts) {
-        return (Page) super.scripts(scripts);
     }
 
     @Override
