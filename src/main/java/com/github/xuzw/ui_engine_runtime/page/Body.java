@@ -17,6 +17,7 @@ import com.github.xuzw.ui_engine_runtime.div.location.Location;
                 @StyleDeclarationAnnotation(property = "font-family", value = "Verdana, Arial, '宋体'"), //
                 @StyleDeclarationAnnotation(property = "margin", value = "0px"), //
                 @StyleDeclarationAnnotation(property = "padding", value = "0px"), //
+                @StyleDeclarationAnnotation(property = "width", value = "100%"), //
         }), })
 public final class Body extends SingletonDiv {
     private Div body;
