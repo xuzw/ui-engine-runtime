@@ -1,6 +1,5 @@
 package com.github.xuzw.ui_engine_runtime.page;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,15 +28,11 @@ public class ScriptPage extends AbstractPage {
     public String toHtml() {
         HtmlBuilder root = new HtmlBuilder();
         HtmlBuilder script = root.child("script").attr("type", "text/javascript");
-        script.text(String.format("/* GenerateBy %s %s */", getClass().getName(), _buildTime()));
+        script.text(String.format("/* GenerateBy %s %s */", getClass().getName(), buildTime()));
         for (Script x : scripts) {
             script.text(x.toString());
         }
         return root.build();
-    }
-
-    private static String _buildTime() {
-        return new SimpleDateFormat("yyyy.MM.dd hh:mm:ss.SSS").format(System.currentTimeMillis());
     }
 
     @Override

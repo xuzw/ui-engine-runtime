@@ -44,7 +44,7 @@ public abstract class AbstractPage implements HtmlElement {
         HtmlBuilder head = html.child("head");
         head.child("title").text(header.getTitle());
         head.child("meta").attr("charset", "utf-8");
-        head.child("meta").attr("name", "generator").attr("content", _buildTime());
+        head.child("meta").attr("name", "generator").attr("content", buildTime());
         for (ExternalStyleSheet x : header.getExternalStyleSheets()) {
             head.child("link").attr("rel", "stylesheet").attr("type", "text/css").attr("href", x.getHref());
         }
@@ -57,7 +57,7 @@ public abstract class AbstractPage implements HtmlElement {
 
     protected abstract void build(HtmlBuilder html);
 
-    private static String _buildTime() {
+    protected static String buildTime() {
         return new SimpleDateFormat("yyyy.MM.dd hh:mm:ss.SSS").format(System.currentTimeMillis());
     }
 
